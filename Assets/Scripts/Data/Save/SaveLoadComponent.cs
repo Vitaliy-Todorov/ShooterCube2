@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Родительсткий класс компонента, данные которого мы будем сохранять
+/// </summary>
 public abstract class SaveLoadComponent : MonoBehaviour
 {
     //Список всех компонентов сцены, данные с которых мы будем сохранять (пока отправлять во временное хранилеще данных)
-    protected static Dictionary<GameObject, List<SaveLoadComponent>> dictionaryComponentGmObj;
+    protected static Dictionary<GameObject, List<SaveLoadComponent>> dictionaryComponentGmObj = new Dictionary<GameObject, List<SaveLoadComponent>>();
     //Список временных хранилищь данных для каждого объекта, данные с которого будут сохранятся
     protected static Dictionary<GameObject, StoringLocalData> listStoringLocal = new Dictionary<GameObject, StoringLocalData>();
 

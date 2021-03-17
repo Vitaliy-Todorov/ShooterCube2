@@ -10,10 +10,8 @@ public class SaveLoadLink : MonoBehaviour
 
     private void Awake()
     {
-        SaveLoadComponent.ListStoringLocal = new Dictionary<GameObject, StoringLocalData>();
         SaveLoadComponent.ListStoringLocal[gameObject] = storingLocal;
 
-        SaveLoadComponent.DictionaryComponentGmObj = new Dictionary<GameObject, List<SaveLoadComponent>>
-            { [gameObject] = new List<SaveLoadComponent>() };
+        SaveLoadComponent.DictionaryComponentGmObj[gameObject] = new List<SaveLoadComponent>();
     }
 }
