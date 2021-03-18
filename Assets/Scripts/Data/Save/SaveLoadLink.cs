@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+п»їusing System.Collections.Generic;
 using UnityEngine;
 
-//Нужен для назначения оперделённому объекту временного хранилища. Так как в абстрактом классе SaveLoadCube data это статическое поле, что бы изменить его значение в редакторе для конкретного объекта ис пользуем данный класс
+/// <summary>
+/// РЎРІСЏР·С‹РІР°РµРј РѕР±СЉРµРєС‚, СЃРѕС…СЂР°РЅСЏРµРјС‹Рµ РєРѕРјРїРѕРЅРµРЅС‚С‹ Рё РІСЂРµРјРµРЅРЅРѕРµ С…СЂР°РЅРёР»РёС‰Рµ РґР°РЅРЅС‹С…
+/// </summary>
 public class SaveLoadLink : MonoBehaviour
 {
     [SerializeField]
@@ -10,8 +11,10 @@ public class SaveLoadLink : MonoBehaviour
 
     private void Awake()
     {
+        //РЎРІСЏР·С‹РІР°РµРј РєРѕРЅРєСЂРµС‚РЅС‹Р№ РѕР±СЉРµРєС‚ СЃ РІСЂРµРјРµРЅРЅС‹Рј С…СЂР°РЅРёР»РёС‰РµРј РµРіРѕ РґР°РЅРЅС‹С…
         SaveLoadComponent.ListStoringLocal[gameObject] = storingLocal;
 
+        //РЎРІСЏР·С‹РІР°РµРј РѕР±СЉРµРєС‚ Рё С‚Рµ РєРѕРјРїР°РЅРµРЅС‚С‹ РёРЅС„РѕСЂРјР°С†РёСЋ СЃ РєРѕС‚РѕСЂС‹С… РЅСѓР¶РЅРѕ СЃРѕС…СЂР°РЅРёС‚СЊ
         SaveLoadComponent.DictionaryComponentGmObj[gameObject] = new List<SaveLoadComponent>();
     }
 }

@@ -19,9 +19,4 @@ public class MainLoad : SaveLoadScene
             PlayerPrefs.DeleteKey("MainLoad");
         }
     }
-
-    /*public static List<CharecterSaveData> GetSaveGmObj()
-    {
-        return listGmObj;
-    }*/
 }

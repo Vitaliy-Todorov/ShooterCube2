@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Временное хранилище данных
+/// <summary>
+/// Временное хранилище данных
+/// </summary>
 [CreateAssetMenu(fileName = "Nwe Save Data", menuName = "GameObjectData", order = 1)]
 public class StoringLocalData : ScriptableObject
 {

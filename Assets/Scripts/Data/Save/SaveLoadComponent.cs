@@ -1,32 +1,38 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Родительсткий класс компонента, данные которого мы будем сохранять
+/// Р РѕРґРёС‚РµР»СЊСЃС‚РєРёР№ РєР»Р°СЃСЃ РєРѕРјРїРѕРЅРµРЅС‚Р°, РґР°РЅРЅС‹Рµ РєРѕС‚РѕСЂРѕРіРѕ РјС‹ Р±СѓРґРµРј СЃРѕС…СЂР°РЅСЏС‚СЊ
 /// </summary>
 public abstract class SaveLoadComponent : MonoBehaviour
 {
-    //Список всех компонентов сцены, данные с которых мы будем сохранять (пока отправлять во временное хранилеще данных)
+    //РЎРїРёСЃРѕРє РІСЃРµС… РєРѕРјРїРѕРЅРµРЅС‚РѕРІ СЃС†РµРЅС‹, РґР°РЅРЅС‹Рµ СЃ РєРѕС‚РѕСЂС‹С… РјС‹ Р±СѓРґРµРј СЃРѕС…СЂР°РЅСЏС‚СЊ (РїРѕРєР° РѕС‚РїСЂР°РІР»СЏС‚СЊ РІРѕ РІСЂРµРјРµРЅРЅРѕРµ С…СЂР°РЅРёР»РµС‰Рµ РґР°РЅРЅС‹С…)
     protected static Dictionary<GameObject, List<SaveLoadComponent>> dictionaryComponentGmObj = new Dictionary<GameObject, List<SaveLoadComponent>>();
-    //Список временных хранилищь данных для каждого объекта, данные с которого будут сохранятся
+    //РЎРїРёСЃРѕРє РІСЂРµРјРµРЅРЅС‹С… С…СЂР°РЅРёР»РёС‰СЊ РґР°РЅРЅС‹С… РґР»СЏ РєР°Р¶РґРѕРіРѕ РѕР±СЉРµРєС‚Р°, РґР°РЅРЅС‹Рµ СЃ РєРѕС‚РѕСЂРѕРіРѕ Р±СѓРґСѓС‚ СЃРѕС…СЂР°РЅСЏС‚СЃСЏ
     protected static Dictionary<GameObject, StoringLocalData> listStoringLocal = new Dictionary<GameObject, StoringLocalData>();
 
     public static Dictionary<GameObject, StoringLocalData> ListStoringLocal { get => listStoringLocal; set => listStoringLocal = value; }
     public static Dictionary<GameObject, List<SaveLoadComponent>> DictionaryComponentGmObj { get => dictionaryComponentGmObj; set => dictionaryComponentGmObj = value; }
 
-    //Сохраняем, загружаем данные отдельного компонента
+    /// <summary>
+    /// РЎРѕС…СЂР°РЅСЏРµРј РґР°РЅРЅС‹Рµ РѕС‚РґРµР»СЊРЅРѕРіРѕ РєРѕРјРїРѕРЅРµРЅС‚Р°
+    /// </summary>
     public abstract void Save();
 
     public abstract void Load();
 
-    //Удаляем компонент из списка загружаемых
+    /// <summary>
+    /// РЈРґР°Р»СЏРµРј РєРѕРјРїРѕРЅРµРЅС‚ removeComponent РѕС‚РЅРѕСЃСЏС‰РёР№СЃСЏ Рє GmObj РёР· СЃРїРёСЃРєР° СЃРѕС…СЂР°РЅСЏРµРјС‹С…/Р·Р°РіСЂСѓР¶Р°РµРјС‹С…
+    /// </summary>
     public static void Remove(GameObject GmObj, SaveLoadComponent removeComponent)
     {
         dictionaryComponentGmObj[GmObj].Remove(removeComponent);
     }
 
-    //Сохраняем, загружаем данные всех компонентов которые находятся в списке listComponent
+    /// <summary>
+    /// РЎРѕС…СЂР°РЅРµРЅРёРµ РґР°РЅРЅС‹Рµ РІСЃРµС… РєРѕРјРїРѕРЅРµРЅС‚РѕРІ РєРѕС‚РѕСЂС‹Рµ РЅР°С…РѕРґСЏС‚СЃСЏ РІ СЃРїРёСЃРєРµ listComponent
+    /// </summary>
     public static void SaveAll()
     {
         foreach (KeyValuePair<GameObject, List<SaveLoadComponent>> saveKeyValue in dictionaryComponentGmObj)

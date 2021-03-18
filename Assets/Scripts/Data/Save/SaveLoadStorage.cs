@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -8,26 +8,32 @@ public class SaveLoadStorage : MonoBehaviour
 {
     protected static string filePath;
 
+    /// <summary>
+    /// Сохраняем в фаил с именем fileName, временные хранилища из списка fileName
+    /// </summary>
     public static void Save(List<ScriptableObject> listGmObj, string fileName)
     {
-        //��� ������������
+        //Для сериализации
         BinaryFormatter bf = new BinaryFormatter();
-        //������ �����
+        //Создаём поток
         FileStream fs = new FileStream(filePath + fileName, FileMode.Create);
 
         foreach (ScriptableObject saveDate in listGmObj)
         {
-            //��������� ������ � string �������������� Json
+            //превращем объект в string закодированный Json
             string jsonData = JsonUtility.ToJson(saveDate, true);
 
-            //����������� � ���������
+            //сериализуем и сохраняем
             bf.Serialize(fs, jsonData);
         }
 
-        //��������� �����
+        //Закрываем поток
         fs.Close();
     }
 
+    /// <summary>
+    /// Загружает из фаил с именем fileName, временные хранилища из списка fileName
+    /// </summary>
     public static void Load(List<ScriptableObject> listGmObj, string fileName)
     {
         if (!File.Exists(filePath + fileName))
