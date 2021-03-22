@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,8 +6,6 @@ public class GameMenu : MonoBehaviour
 {
     [SerializeField]
     Button mainMenuButton;
-
-    List<GameObject> listGmObj;
 
     [SerializeField]
     Button saveButton;
@@ -28,20 +24,19 @@ public class GameMenu : MonoBehaviour
 
     void MainMenu()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("MainMenu");
     }
 
     void Save()
     {
-        SaveLoadComponent.SaveAll();
         string fileName = "/save" + 1 + ".gamesave";
         SaveLoadScene.SaveGame(fileName);
     }
 
     void Load()
     {
-        SaveLoadComponent.LoadAll();
         string fileName = "/save" + 1 + ".gamesave";
-        SaveLoadScene.LoadGame(fileName);
+        PlayerPrefs.SetString("Load", fileName);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -2,17 +2,10 @@ using UnityEngine;
 
 public class Motion : SaveLoadComponent
 {
-    [SerializeField]
-    bool save;
-    StoringLocalData storingLocal;
 
     private void Awake()
     {
-        if (save)
-        {
-            storingLocal = listStoringLocal[gameObject];
-            dictionaryComponentGmObj[gameObject].Add(this);
-        }
+        AddInSaveList();
     }
 
     public void Move(Vector3 movement, float speed)
@@ -28,13 +21,13 @@ public class Motion : SaveLoadComponent
 
     public override void Save()
     {
-        storingLocal.CurrentPosition = transform.position;
-        storingLocal.CurrentNormal = transform.forward;
+        storingLocal.Position = transform.position;
+        storingLocal.Normal = transform.forward;
     }
 
     public override void Load()
     {
-        transform.position = storingLocal.CurrentPosition;
-        transform.forward = storingLocal.CurrentNormal;
+        transform.position = storingLocal.Position;
+        transform.forward = storingLocal.Normal;
     }
 }

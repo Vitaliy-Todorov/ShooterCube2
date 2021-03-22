@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
@@ -11,7 +10,7 @@ public class SaveLoadStorage : MonoBehaviour
     /// <summary>
     /// Сохраняем в фаил с именем fileName, временные хранилища из списка fileName
     /// </summary>
-    public static void Save(List<ScriptableObject> listGmObj, string fileName)
+    public static void Save(List<StoringLocalData> listGmObj, string fileName)
     {
         //Для сериализации
         BinaryFormatter bf = new BinaryFormatter();

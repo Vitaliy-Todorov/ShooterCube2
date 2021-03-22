@@ -1,23 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Загружаем и сохраняем все временные хранилища сцены
+/// </summary>
 public class SaveLoadScene : SaveLoadStorage
 {
-    protected static List<ScriptableObject> listGmObj;
+    static List<StoringLocalData> listStoringLocal = new List<StoringLocalData>();
 
     static List<string> listFile = new List<string>();
 
     public static List<string> ListFile { get => listFile; }
+    public static List<StoringLocalData> ListStoringLocal { get => listStoringLocal; set => listStoringLocal = value; }
 
     /// <summary>
     /// Сохраняем все объекты сцены
     /// </summary>
     public static void SaveGame(string fileName)
     {
+        SaveLoadComponent.SaveAll();
+        StoringLocalData.SaveDestroyAll();
         listFile.Add(fileName);
-        Save(listGmObj, fileName);
+        Save(ListStoringLocal, fileName);
     }
 
     /// <summary>
@@ -25,7 +29,6 @@ public class SaveLoadScene : SaveLoadStorage
     /// </summary>
     public static void LoadGame(string fileName)
     {
-        Load(listGmObj, fileName);
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        PlayerPrefs.SetString("Load", fileName);
     }
 }

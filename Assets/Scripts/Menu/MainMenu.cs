@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -27,7 +25,7 @@ public class MainMenu : MonoBehaviour
 
         loadButton.onClick.AddListener(delegate
         {
-            LoadGame(Application.persistentDataPath + "/save.gamesave");
+            LoadGame("/save" + 1 + ".gamesave");
         });
 
         settingsButton.onClick.AddListener(delegate {
@@ -39,18 +37,18 @@ public class MainMenu : MonoBehaviour
 
     void PlayPressed()
     {
-        SceneManager.LoadScene("Level_1");
+        SceneManager.LoadScene("Level_0");
     }
 
-    void LoadGame(string loatFile)
+    void LoadGame(string fileName)
     {
-        PlayerPrefs.SetString("MainLoad", loatFile);
-        SceneManager.LoadScene("Level_1");
+        PlayerPrefs.SetString("Load", fileName);
+        SceneManager.LoadScene("Level_0");
     }
 
     void SettingsPressed(GameObject obj)
     {
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
         obj.SetActive(true);
     }
 

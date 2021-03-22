@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+п»їusing System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -30,11 +29,11 @@ public class SettingsMenu : MonoBehaviour
     {
         fullScreenToggle.isOn = Screen.fullScreen;
 
-        //Устанавливаем ползунок громкости в позицию соответствующую audioMixer
+        //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РїРѕР»Р·СѓРЅРѕРє РіСЂРѕРјРєРѕСЃС‚Рё РІ РїРѕР·РёС†РёСЋ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰СѓСЋ audioMixer
         audioMixer.GetFloat("masterVol", out float x);
         audioSlider.value  = x;
 
-        //Устанавливаем позицию графики в текущую
+        //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РїРѕР·РёС†РёСЋ РіСЂР°С„РёРєРё РІ С‚РµРєСѓС‰СѓСЋ
         graphicsQualityDropdown.value = QualitySettings.GetQualityLevel();
 
         fullScreenToggle.onValueChanged.AddListener(delegate {
@@ -63,7 +62,7 @@ public class SettingsMenu : MonoBehaviour
 
     private void Awake()
     {
-        //List нужен для заполнения resolutionDropdown
+        //List РЅСѓР¶РµРЅ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ resolutionDropdown
         List<string> resolutionStr = new List<string>();
         permissions = Screen.resolutions;
         int currentRsl = 0;
@@ -72,7 +71,7 @@ public class SettingsMenu : MonoBehaviour
         {
             resolutionStr.Add(permission.width + "x" + permission.height);
 
-            //Выставляем значение resolutionDropdown на текущее
+            //Р’С‹СЃС‚Р°РІР»СЏРµРј Р·РЅР°С‡РµРЅРёРµ resolutionDropdown РЅР° С‚РµРєСѓС‰РµРµ
             Resolution currentResolution  = Screen.currentResolution;
             currentResolution.refreshRate = permission.refreshRate;
             if (currentResolution.Equals(permission))
@@ -80,9 +79,9 @@ public class SettingsMenu : MonoBehaviour
             i++;
         }
 
-        //Очищаем Dropdown Resolution
+        //РћС‡РёС‰Р°РµРј Dropdown Resolution
         resolutionDropdown.ClearOptions();
-        //Заполняем Dropdown списком resolutionStr
+        //Р—Р°РїРѕР»РЅСЏРµРј Dropdown СЃРїРёСЃРєРѕРј resolutionStr
         resolutionDropdown.AddOptions(resolutionStr);
 
         resolutionDropdown.value = currentRsl;
