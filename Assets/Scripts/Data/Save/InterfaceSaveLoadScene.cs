@@ -14,23 +14,21 @@ public class InterfaceSaveLoadScene : SaveLoadScene
         //Хотя переменная объявляется и используется в SaveLoadStorage
         filePath = Application.persistentDataPath;
 
+        // Находим ScriptableObject для сохранения списка имён файлов сохранения и сцен на коротых произведенено сохранение
+        saveNameAndScenes = Resources.Load<SaveNameAndScenes>("SaveNameAndScenes");
+        //saveNameAndScenes = FindObjectOfType<SaveNameAndScenes>();
+
         //Если в память было что-то сохранено с меткой "Load", значит при загрузки сцены выколняем загрузку, указанного в паняти файла
         string fileName = PlayerPrefs.GetString("Load");
         if (fileName != "")
         {
             LoadGame(fileName);
-            SaveLoadComponent.LoadAll();
-            PlayerPrefs.DeleteKey("Load");
-            //Запускаем время после загрузки из игрового меню
-            Time.timeScale = 1;
         }
 
         // Получаем для SaveLoadScene список всех сохраняемых временных хранилищь из SaveLoadComponent (SaveLoadLink)
-        ListStoringLocal = InterfaceStoringLocaAndComponent.ListAllStoringLocal;
+        ListAllStoringLocal = InterfaceStoringLocaAndComponent.ListAllStoringLocal;
 
         // Получаем для StoringLocalData список всех сохраняемых временных хранилищь из SaveLoadComponent (SaveLoadLink)
         StoringLocalData.ListAllStoringLocal = InterfaceStoringLocaAndComponent.ListAllStoringLocal;
     }
-
-
 }

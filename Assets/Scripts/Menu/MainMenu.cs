@@ -43,7 +43,7 @@ public class MainMenu : MonoBehaviour
     void LoadGame(string fileName)
     {
         PlayerPrefs.SetString("Load", fileName);
-        SceneManager.LoadScene("Level_0");
+        SaveLoadScene.LoadGameInManu(fileName);
     }
 
     void SettingsPressed(GameObject obj)

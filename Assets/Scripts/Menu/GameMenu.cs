@@ -36,7 +36,6 @@ public class GameMenu : MonoBehaviour
     void Load()
     {
         string fileName = "/save" + 1 + ".gamesave";
-        PlayerPrefs.SetString("Load", fileName);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SaveLoadScene.LoadGameInManu(fileName);
     }
 }
