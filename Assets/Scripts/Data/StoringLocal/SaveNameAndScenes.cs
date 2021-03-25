@@ -5,10 +5,30 @@ using UnityEngine;
 public class SaveNameAndScenes : ScriptableObject
 {
     [SerializeField]
-    Dictionary<string, string> saveNameAndScenes = new Dictionary<string, string>();
-
+    List<string> saves;
     [SerializeField]
-    public float health = 10;
+    List<string> scenes;
 
-    public Dictionary<string, string> Dictionary { get => saveNameAndScenes; set => saveNameAndScenes = value; }
+    public List<string> Saves { get => saves; set => saves = value; }
+
+    public void AddSave(string save, string scene)
+    {
+        Saves.Add(save);
+        scenes.Add(scene);
+    }
+
+    public string GetScenes(string save)
+    {
+        return scenes[Saves.IndexOf(save)];
+    }
+
+    public void ChangeScene(string save, string scene)
+    {
+        scenes[Saves.IndexOf(save)] = scene;
+    }
+
+    public bool ContainsSave(string save)
+    {
+        return saves.Contains(save);
+    }
 }

@@ -56,7 +56,6 @@ public class SaveLoadStorage : MonoBehaviour
     {
         //превращем объект в string закодированный Json
         string jsonData = JsonUtility.ToJson(storingLoca, true);
-        _ = jsonData;
 
         using (FileStream fstream = File.Create(filePath + fileName))
         {
