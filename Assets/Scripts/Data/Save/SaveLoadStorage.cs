@@ -12,22 +12,21 @@ public class SaveLoadStorage : MonoBehaviour
     /// </summary>
     public static void Save(List<StoringLocalData> listGmObj, string fileName)
     {
-        //Для сериализации
+        //Сериализует и десериализует объект в двоичном формате.
         BinaryFormatter bf = new BinaryFormatter();
-        //Создаём поток
-        FileStream fs = new FileStream(filePath + fileName, FileMode.Create);
 
-        foreach (StoringLocalData saveDate in listGmObj)
+        //Создаё или перезаписываем фаил для сохранения
+        using (FileStream fs = File.Create(filePath + fileName))
         {
-            //превращем объект в string закодированный Json
-            string jsonData = JsonUtility.ToJson(saveDate, true);
+            foreach (StoringLocalData saveDate in listGmObj)
+            {
+                //превращем объект в string закодированный Json
+                string jsonData = JsonUtility.ToJson(saveDate, true);
 
-            //сериализуем и сохраняем
-            bf.Serialize(fs, jsonData);
+                //сериализуем и сохраняем
+                bf.Serialize(fs, jsonData);
+            }
         }
-
-        //Закрываем поток
-        fs.Close();
     }
 
     /// <summary>
@@ -39,14 +38,12 @@ public class SaveLoadStorage : MonoBehaviour
             return;
 
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream fs = new FileStream(filePath + fileName, FileMode.Open);
 
-        foreach (StoringLocalData loadData in listGmObj)
+        //Чтение из файла
+        using (FileStream fs = File.OpenRead(filePath + fileName))
         {
-            JsonUtility.FromJsonOverwrite((string)bf.Deserialize(fs), loadData);
+            JsonUtility.FromJsonOverwrite((string)bf.Deserialize(fs), listGmObj);
         }
-
-        fs.Close();
     }
 
     /// <summary>
@@ -57,12 +54,12 @@ public class SaveLoadStorage : MonoBehaviour
         //превращем объект в string закодированный Json
         string jsonData = JsonUtility.ToJson(storingLoca, true);
 
-        using (FileStream fstream = File.Create(filePath + fileName))
+        BinaryFormatter bf = new BinaryFormatter();
+
+        //Создаё или перезаписываем фаил для сохранения
+        using (FileStream fs = File.Create(filePath + fileName))
         {
-            // преобразуем строку в байты
-            byte[] array = System.Text.Encoding.Default.GetBytes(jsonData);
-            // запись массива байтов в файл
-            fstream.Write(array, 0, array.Length);
+            bf.Serialize(fs, jsonData);
         }
     }
 
@@ -75,10 +72,11 @@ public class SaveLoadStorage : MonoBehaviour
             return;
 
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream fs = new FileStream(filePath + fileName, FileMode.Open);
 
-        JsonUtility.FromJsonOverwrite((string)bf.Deserialize(fs), storingLoca);
-        
-        fs.Close();
+        //Чтение из файла
+        using (FileStream fs = File.OpenRead(filePath + fileName))
+        {
+            JsonUtility.FromJsonOverwrite((string) bf.Deserialize(fs), storingLoca);
+        }
     }
 }
