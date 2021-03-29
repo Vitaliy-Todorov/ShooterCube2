@@ -29,5 +29,7 @@ public class InterfaceStoringLocaAndComponent : MonoBehaviour
         SaveLoadComponent.ListStoringLocal.Remove(gameObject);
 
         SaveLoadComponent.DictionaryComponentGmObj.Remove(gameObject);
+
+        listAllStoringLocal.Clear();
     }
 }

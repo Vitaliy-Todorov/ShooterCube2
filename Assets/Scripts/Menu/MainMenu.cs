@@ -25,7 +25,7 @@ public class MainMenu : MonoBehaviour
 
         loadButton.onClick.AddListener(delegate
         {
-            LoadGame("/save" + 1 + ".gamesave");
+            LoadGame("/save" + 1);
         });
 
         settingsButton.onClick.AddListener(delegate {
