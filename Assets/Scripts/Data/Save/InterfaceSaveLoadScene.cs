@@ -12,11 +12,7 @@ public class InterfaceSaveLoadScene : SaveLoadScene
         //Путь назначается здесь т. к.
         //get_persistentDataPath не может быть вызван из конструктора MonoBehaviour (или инициализатора поля экземпляра) 
         //Хотя переменная объявляется и используется в SaveLoadStorage
-        filePath = Application.persistentDataPath;
-
-        // Находим ScriptableObject для сохранения списка имён файлов сохранения и сцен на коротых произведенено сохранение
-        saveNameAndScenes = Resources.Load<SaveNameAndScenes>("SaveNameAndScenes");
-        //saveNameAndScenes = FindObjectOfType<SaveNameAndScenes>();
+        filePath = Application.dataPath;
 
         //Если в память было что-то сохранено с меткой "Load", значит при загрузки сцены выколняем загрузку, указанного в паняти файла
         string fileName = PlayerPrefs.GetString("Load");

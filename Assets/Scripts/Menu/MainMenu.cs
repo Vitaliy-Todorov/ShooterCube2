@@ -42,7 +42,6 @@ public class MainMenu : MonoBehaviour
 
     void LoadGame(string fileName)
     {
-        PlayerPrefs.SetString("Load", fileName);
         SaveLoadScene.LoadGameInManu(fileName);
     }
 

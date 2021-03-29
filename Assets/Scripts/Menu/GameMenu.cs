@@ -15,6 +15,8 @@ public class GameMenu : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 0;
+
         mainMenuButton.onClick.AddListener(MainMenu);
 
         saveButton.onClick.AddListener(Save);
@@ -25,6 +27,8 @@ public class GameMenu : MonoBehaviour
     void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        //Запускаем время после загрузки
+        Time.timeScale = 1;
     }
 
     void Save()
@@ -37,5 +41,7 @@ public class GameMenu : MonoBehaviour
     {
         string fileName = "/save" + 1 + ".gamesave";
         SaveLoadScene.LoadGameInManu(fileName);
+        //Запускаем время после загрузки
+        Time.timeScale = 1;
     }
 }
