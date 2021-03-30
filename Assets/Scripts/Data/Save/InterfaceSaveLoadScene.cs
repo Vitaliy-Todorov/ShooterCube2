@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Linq;
 
 /// <summary>
 /// Загружаем данные из файла при создании сцены
@@ -22,9 +23,21 @@ public class InterfaceSaveLoadScene : SaveLoadScene
         }
 
         // Получаем для SaveLoadScene список всех сохраняемых временных хранилищь из SaveLoadComponent (SaveLoadLink)
-        ListAllStoringLocal = InterfaceStoringLocaAndComponent.ListAllStoringLocal;
+        ListAllStoringLocal = InterfaceStoringLocalShared.ListAllStoringLocal;
+        _ = ListAllStoringLocal;
 
         // Получаем для StoringLocalData список всех сохраняемых временных хранилищь из SaveLoadComponent (SaveLoadLink)
-        StoringLocalData.ListAllStoringLocal = InterfaceStoringLocaAndComponent.ListAllStoringLocal;
+        StoringLocalData.ListAllStoringLocal = InterfaceStoringLocalShared.ListAllStoringLocal;
+
+        //Упорядочиваем по имени. По умному это надо было сделать в InterfaceStoringLocalShared.
+        
+        InterfaceStoringLocalShared.ListAllStoringLocal = InterfaceStoringLocalShared.ListAllStoringLocal
+            .OrderBy(storingLocal => storingLocal.name).ToList();
+    }
+
+    private void OnDestroy()
+    {
+        //Очищаем список сохраняемых компонент (делаем здесь так как экземпляры SaveLoadComponent не создаются )
+        SaveLoadComponent.DictionaryComponentGmObj.Clear();
     }
 }

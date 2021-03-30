@@ -42,10 +42,6 @@ public class SaveLoadScene : SaveLoadStorage
     {
         Load(listSaveName, "/listSaveName");
 
-        //Очищаем список сохраняемых хранилищь
-        InterfaceStoringLocaAndComponent.ListAllStoringLocal.Clear();
-        SaveLoadComponent.DictionaryComponentGmObj.Clear();
-
         //Говорим InterfaceSaveLoadScene о том что нужно производить загрузку файла после запуска сцены и говорим какой файл загружать fileName
         PlayerPrefs.SetString("Load", fileName);
 

@@ -13,6 +13,9 @@ public class GameMenu : MonoBehaviour
     [SerializeField]
     Button loadButton;
 
+    [SerializeField]
+    Button exitButton;
+
     private void Start()
     {
         Time.timeScale = 0;
@@ -22,6 +25,8 @@ public class GameMenu : MonoBehaviour
         saveButton.onClick.AddListener(Save);
 
         loadButton.onClick.AddListener(Load);
+
+        exitButton.onClick.AddListener(ExitPressed);
     }
 
     void MainMenu()
@@ -43,5 +48,10 @@ public class GameMenu : MonoBehaviour
         SaveLoadScene.LoadGameInManu(fileName);
         //Запускаем время после загрузки
         Time.timeScale = 1;
+    }
+
+    void ExitPressed()
+    {
+        Application.Quit();
     }
 }

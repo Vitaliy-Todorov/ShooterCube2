@@ -23,8 +23,11 @@ public class SaveLoadStorage : MonoBehaviour
 
         foreach (StoringLocalData storingLocal in listGmObj)
         {
-            //превращем объект в string закодированный Json и добовлем разделитель, отмечающий,
-            //что закончилась информация от одном из объектов
+            Debug.Log("storingLocal: " + storingLocal);
+            //превращем объект в string закодированный Json
+            //добовлем разделитель
+            //Kr7!G) - отделяет название хранилеща от самго хранилища
+            //b?pM&2 - отделяет хранилища
             jsonData = JsonUtility.ToJson(storingLocal, true) + "b?pM&2";
             strJsonData += jsonData;
         }
@@ -47,6 +50,7 @@ public class SaveLoadStorage : MonoBehaviour
 
         foreach (var storingLocal in arrayJsonData.Zip(listGmObj, Tuple.Create))
         {
+            Debug.Log("storingLocal: " + storingLocal.Item2);
             JsonUtility.FromJsonOverwrite(storingLocal.Item1, storingLocal.Item2);
         }
     }
