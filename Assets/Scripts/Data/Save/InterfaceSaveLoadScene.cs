@@ -15,24 +15,22 @@ public class InterfaceSaveLoadScene : SaveLoadScene
         //Хотя переменная объявляется и используется в SaveLoadStorage
         filePath = Application.dataPath;
 
+        // Получаем для SaveLoadScene список всех сохраняемых временных хранилищь из SaveLoadComponent (SaveLoadLink)
+        ListAllStoringLocal = InterfaceStoringLocalShared.ListAllStoringLocal;
+
+        // Получаем для StoringLocalData список всех сохраняемых временных хранилищь из SaveLoadComponent (SaveLoadLink)
+        StoringLocalData.ListAllStoringLocal = InterfaceStoringLocalShared.ListAllStoringLocal;
+
+        //Упорядочиваем по имени. По умному это надо было сделать в InterfaceStoringLocalShared.
+        InterfaceStoringLocalShared.ListAllStoringLocal = InterfaceStoringLocalShared.ListAllStoringLocal
+            .OrderBy(storingLocal => storingLocal.name).ToList();
+
         //Если в память было что-то сохранено с меткой "Load", значит при загрузки сцены выколняем загрузку, указанного в паняти файла
         string fileName = PlayerPrefs.GetString("Load");
         if (fileName != "")
         {
             LoadGame(fileName);
         }
-
-        // Получаем для SaveLoadScene список всех сохраняемых временных хранилищь из SaveLoadComponent (SaveLoadLink)
-        ListAllStoringLocal = InterfaceStoringLocalShared.ListAllStoringLocal;
-        _ = ListAllStoringLocal;
-
-        // Получаем для StoringLocalData список всех сохраняемых временных хранилищь из SaveLoadComponent (SaveLoadLink)
-        StoringLocalData.ListAllStoringLocal = InterfaceStoringLocalShared.ListAllStoringLocal;
-
-        //Упорядочиваем по имени. По умному это надо было сделать в InterfaceStoringLocalShared.
-        
-        InterfaceStoringLocalShared.ListAllStoringLocal = InterfaceStoringLocalShared.ListAllStoringLocal
-            .OrderBy(storingLocal => storingLocal.name).ToList();
     }
 
     private void OnDestroy()

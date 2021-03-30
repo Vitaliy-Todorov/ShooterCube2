@@ -23,10 +23,8 @@ public class SaveLoadStorage : MonoBehaviour
 
         foreach (StoringLocalData storingLocal in listGmObj)
         {
-            Debug.Log("storingLocal: " + storingLocal);
             //превращем объект в string закодированный Json
             //добовлем разделитель
-            //Kr7!G) - отделяет название хранилеща от самго хранилища
             //b?pM&2 - отделяет хранилища
             jsonData = JsonUtility.ToJson(storingLocal, true) + "b?pM&2";
             strJsonData += jsonData;

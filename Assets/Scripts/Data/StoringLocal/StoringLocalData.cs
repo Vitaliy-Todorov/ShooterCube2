@@ -7,7 +7,7 @@ using System;
 /// </summary>
 public class StoringLocalData : ScriptableObject
 {
-    private static List<StoringLocalData> listAllStoringLocal;
+    private static List<StoringLocalData> listAllStoringLocal = new List<StoringLocalData>();
 
     public static List<StoringLocalData> ListAllStoringLocal { get => listAllStoringLocal; set => listAllStoringLocal = value; }
 
