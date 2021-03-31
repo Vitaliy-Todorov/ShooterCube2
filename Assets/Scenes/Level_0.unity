@@ -443,12 +443,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3827228389916834612, guid: b60cd2dd92488754da7441d65ac9e1eb, type: 3}
       propertyPath: saveInRootGmObj
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3827228389916834613, guid: b60cd2dd92488754da7441d65ac9e1eb, type: 3}
       propertyPath: m_Name
       value: ShootingCube (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3843220158967953352, guid: b60cd2dd92488754da7441d65ac9e1eb, type: 3}
+      propertyPath: storingLocalForGmObj
+      value: 
+      objectReference: {fileID: 11400000, guid: 7833c9545d531c74d8064c052b6dc644, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b60cd2dd92488754da7441d65ac9e1eb, type: 3}
 --- !u!1001 &2809038722062764772
@@ -581,12 +585,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3827228389916834612, guid: b60cd2dd92488754da7441d65ac9e1eb, type: 3}
       propertyPath: saveInRootGmObj
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3827228389916834613, guid: b60cd2dd92488754da7441d65ac9e1eb, type: 3}
       propertyPath: m_Name
       value: ShootingCube
       objectReference: {fileID: 0}
+    - target: {fileID: 3843220158967953352, guid: b60cd2dd92488754da7441d65ac9e1eb, type: 3}
+      propertyPath: storingLocalForGmObj
+      value: 
+      objectReference: {fileID: 11400000, guid: c26a00ac1708bdc48b422547efaca628, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b60cd2dd92488754da7441d65ac9e1eb, type: 3}
 --- !u!1001 &4106201884309471605

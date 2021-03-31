@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Linq;
 
 /// <summary>
 /// Загружаем данные из файла при создании сцены
@@ -12,11 +13,17 @@ public class InterfaceSaveLoadScene : SaveLoadScene
         //Путь назначается здесь т. к.
         //get_persistentDataPath не может быть вызван из конструктора MonoBehaviour (или инициализатора поля экземпляра) 
         //Хотя переменная объявляется и используется в SaveLoadStorage
-        filePath = Application.persistentDataPath;
+        filePath = Application.dataPath;
 
-        // Находим ScriptableObject для сохранения списка имён файлов сохранения и сцен на коротых произведенено сохранение
-        saveNameAndScenes = Resources.Load<SaveNameAndScenes>("SaveNameAndScenes");
-        //saveNameAndScenes = FindObjectOfType<SaveNameAndScenes>();
+        // Получаем для SaveLoadScene список всех сохраняемых временных хранилищь из SaveLoadComponent (SaveLoadLink)
+        ListAllStoringLocal = InterfaceStoringLocalShared.ListAllStoringLocal;
+
+        // Получаем для StoringLocalData список всех сохраняемых временных хранилищь из SaveLoadComponent (SaveLoadLink)
+        StoringLocalData.ListAllStoringLocal = InterfaceStoringLocalShared.ListAllStoringLocal;
+
+        //Упорядочиваем по имени. По умному это надо было сделать в InterfaceStoringLocalShared.
+        InterfaceStoringLocalShared.ListAllStoringLocal = InterfaceStoringLocalShared.ListAllStoringLocal
+            .OrderBy(storingLocal => storingLocal.name).ToList();
 
         //Если в память было что-то сохранено с меткой "Load", значит при загрузки сцены выколняем загрузку, указанного в паняти файла
         string fileName = PlayerPrefs.GetString("Load");
@@ -24,11 +31,11 @@ public class InterfaceSaveLoadScene : SaveLoadScene
         {
             LoadGame(fileName);
         }
+    }
 
-        // Получаем для SaveLoadScene список всех сохраняемых временных хранилищь из SaveLoadComponent (SaveLoadLink)
-        ListAllStoringLocal = InterfaceStoringLocaAndComponent.ListAllStoringLocal;
-
-        // Получаем для StoringLocalData список всех сохраняемых временных хранилищь из SaveLoadComponent (SaveLoadLink)
-        StoringLocalData.ListAllStoringLocal = InterfaceStoringLocaAndComponent.ListAllStoringLocal;
+    private void OnDestroy()
+    {
+        //Очищаем список сохраняемых компонент (делаем здесь так как экземпляры SaveLoadComponent не создаются )
+        SaveLoadComponent.DictionaryComponentGmObj.Clear();
     }
 }

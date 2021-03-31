@@ -25,7 +25,7 @@ public class MainMenu : MonoBehaviour
 
         loadButton.onClick.AddListener(delegate
         {
-            LoadGame("/save" + 1 + ".gamesave");
+            LoadGame("/save" + 1);
         });
 
         settingsButton.onClick.AddListener(delegate {
@@ -42,7 +42,6 @@ public class MainMenu : MonoBehaviour
 
     void LoadGame(string fileName)
     {
-        PlayerPrefs.SetString("Load", fileName);
         SaveLoadScene.LoadGameInManu(fileName);
     }
 
