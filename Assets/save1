@@ -1,39 +1,57 @@
-1ShootingCube=h25~Q{
+2MotionlessShootingCube=h25~Q{
     "position": {
-        "x": 2.598717212677002,
-        "y": 0.5,
+        "x": 0.0,
+        "y": 0.0,
         "z": 0.0
     },
     "normal": {
         "x": 0.0,
         "y": 0.0,
-        "z": 1.0
+        "z": 0.0
     },
     "normalModel": {
         "x": 0.0,
         "y": 0.0,
-        "z": 1.0
+        "z": 0.0
     },
     "health": 100.0,
     "currentDeath": false,
     "saveDeath": false
-}b?pM&21MotionlessShootingCube=h25~Q{
+}b?pM&22ShootingCube=h25~Q{
     "position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
+        "x": -1.8251067399978638,
+        "y": 0.49999988079071047,
+        "z": -8.5
     },
     "normal": {
-        "x": 0.0,
+        "x": -1.0000001192092896,
         "y": 0.0,
-        "z": 0.0
+        "z": -1.1920928955078126e-7
     },
     "normalModel": {
-        "x": 0.0,
+        "x": -1.0000001192092896,
         "y": 0.0,
-        "z": 0.0
+        "z": -1.1920928955078126e-7
     },
-    "health": 72.0,
-    "currentDeath": false,
-    "saveDeath": false
+    "health": 100.0,
+    "currentDeath": true,
+    "saveDeath": true
+}b?pM&22RotationStatic=h25~Q{
+    "listNormal": [
+        {
+            "x": -1.0000001192092896,
+            "y": 0.0,
+            "z": -1.1920928955078126e-7
+        },
+        {
+            "x": -1.0000001192092896,
+            "y": 0.0,
+            "z": -1.1920928955078126e-7
+        },
+        {
+            "x": -1.0000001192092896,
+            "y": 0.0,
+            "z": -1.1920928955078126e-7
+        }
+    ]
 }b?pM&2

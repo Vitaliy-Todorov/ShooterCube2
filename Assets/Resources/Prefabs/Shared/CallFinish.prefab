@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1316456300767330014}
   - component: {fileID: 1316456300767330015}
   - component: {fileID: 1316456300767330012}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: CallFinish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,4 +74,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 534c0eb528e259740952c1434af9c1c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FinishMenu: {fileID: 0}
   GameMenu: {fileID: 0}
