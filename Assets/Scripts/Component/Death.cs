@@ -12,7 +12,7 @@ public class Death : SaveLoadComponent
     public void DeathRoot()
     {
         storingLocal.CurrentDeath = true;
-        dictionaryComponentGmObj.Remove(gameObject);
+        Remove(gameObject);
         Destroy(transform.root.gameObject);
     }
 

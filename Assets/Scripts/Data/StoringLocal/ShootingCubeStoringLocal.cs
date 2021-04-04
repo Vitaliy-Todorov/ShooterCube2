@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Временное хранилище данных
 /// </summary>
-[CreateAssetMenu(fileName = "Nwe Save Data", menuName = "ShootingCube", order = 1)]
+[CreateAssetMenu(fileName = "ShootingCube", menuName = "StoringLocalData/ShootingCube", order = 2)]
 public class ShootingCubeStoringLocal : StoringLocalData
 {
     [Header("Position")]
@@ -36,6 +36,7 @@ public class ShootingCubeStoringLocal : StoringLocalData
         set { normal = value; }
         get { return normal; }
     }
+
     public override Vector3 NormalModel { get => normalModel; set => normalModel = value; }
 
     public override float Health

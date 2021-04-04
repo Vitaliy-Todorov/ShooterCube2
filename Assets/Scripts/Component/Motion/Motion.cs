@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Motion : SaveLoadComponent
 {
-
     private void Awake()
     {
         AddInSaveList();

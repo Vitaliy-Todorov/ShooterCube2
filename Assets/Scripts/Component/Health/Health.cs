@@ -36,11 +36,11 @@ public class Health : Death
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        InflictDamage bullet = other.GetComponent<InflictDamage>();
+        InflictDamage bullet = collision.gameObject.GetComponent<InflictDamage>();
 
-        if ((other.transform.root != transform.root) && bullet)
+        if ((collision.gameObject.transform.root != transform.root) && bullet)
         {
             currentHealth -= bullet.Damege / armor;
             healthBar.SetHealth(currentHealth);

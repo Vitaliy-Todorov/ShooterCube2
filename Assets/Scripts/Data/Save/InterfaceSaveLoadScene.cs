@@ -21,10 +21,6 @@ public class InterfaceSaveLoadScene : SaveLoadScene
         // Получаем для StoringLocalData список всех сохраняемых временных хранилищь из SaveLoadComponent (SaveLoadLink)
         StoringLocalData.ListAllStoringLocal = InterfaceStoringLocalShared.ListAllStoringLocal;
 
-        //Упорядочиваем по имени. По умному это надо было сделать в InterfaceStoringLocalShared.
-        InterfaceStoringLocalShared.ListAllStoringLocal = InterfaceStoringLocalShared.ListAllStoringLocal
-            .OrderBy(storingLocal => storingLocal.name).ToList();
-
         //Если в память было что-то сохранено с меткой "Load", значит при загрузки сцены выколняем загрузку, указанного в паняти файла
         string fileName = PlayerPrefs.GetString("Load");
         if (fileName != "")
@@ -36,6 +32,6 @@ public class InterfaceSaveLoadScene : SaveLoadScene
     private void OnDestroy()
     {
         //Очищаем список сохраняемых компонент (делаем здесь так как экземпляры SaveLoadComponent не создаются )
-        SaveLoadComponent.DictionaryComponentGmObj.Clear();
+        SaveLoadComponent.Clear();
     }
 }

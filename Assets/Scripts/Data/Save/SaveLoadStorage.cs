@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
-using System.Linq;
+//using System.Linq;
 using System;
 
 public class SaveLoadStorage : MonoBehaviour
@@ -12,33 +12,39 @@ public class SaveLoadStorage : MonoBehaviour
     //Сериализует и десериализует объект в двоичном формате.
     static BinaryFormatter bf = new BinaryFormatter();
 
+    static Dictionary<string, string> dicictionaryStoringLocalStr = new Dictionary<string, string>();
+
 
     /// <summary>
     /// Сохраняем в фаил с именем fileName, временные хранилища
     /// </summary>
-    public static void Save(List<StoringLocalData> listGmObj, string fileName)
+    public static void Save(List<StoringLocalData> listStoringLocal, string fileName)
     {
+        //listStoringLocal = listStoringLocal.OrderBy(storingLocal => storingLocal.name).ToList(); упорядочиваем по имени
         string strJsonData = "";
         string jsonData = "";
 
-        foreach (StoringLocalData storingLocal in listGmObj)
+        foreach (StoringLocalData storingLocal in listStoringLocal)
         {
             //превращем объект в string закодированный Json
             //добовлем разделитель
             //b?pM&2 - отделяет хранилища
-            jsonData = JsonUtility.ToJson(storingLocal, true) + "b?pM&2";
+            jsonData = storingLocal.name + "=h25~Q" + JsonUtility.ToJson(storingLocal, true) + "b?pM&2";
             strJsonData += jsonData;
         }
 
         //Создаё или перезаписываем фаил для сохранения
         File.WriteAllText(filePath + fileName, strJsonData);
+
+        dicictionaryStoringLocalStr.Clear();
     }
 
     /// <summary>
     /// Загружает из фаил с именем fileName, временные хранилища
     /// </summary>
-    public static void Load(List<StoringLocalData> listGmObj, string fileName)
+    public static void Load(List<StoringLocalData> listStoringLocal, string fileName)
     {
+        //listStoringLocal = listStoringLocal.OrderBy(storingLocal => storingLocal.name).ToList();
         //Чтение из файла
         string strJsonData = File.ReadAllText(filePath + fileName);
 
@@ -46,11 +52,20 @@ public class SaveLoadStorage : MonoBehaviour
         //Разбиваем строку на информацию о разных объектах
         string[] arrayJsonData = strJsonData.Split(separatingStrings, StringSplitOptions.RemoveEmptyEntries);
 
-        foreach (var storingLocal in arrayJsonData.Zip(listGmObj, Tuple.Create))
+        string[] storingLocalNameValue;
+
+        foreach (string strStoringLocal in arrayJsonData)
         {
-            Debug.Log("storingLocal: " + storingLocal.Item2);
-            JsonUtility.FromJsonOverwrite(storingLocal.Item1, storingLocal.Item2);
+            separatingStrings = new[] { "=h25~Q" };
+            //Разбиваем строку на имя и информацию хранящуюся в хранилище
+            storingLocalNameValue = strStoringLocal.Split(separatingStrings, StringSplitOptions.RemoveEmptyEntries);
+            dicictionaryStoringLocalStr.Add(storingLocalNameValue[0], storingLocalNameValue[1]);
         }
+
+        foreach (StoringLocalData storingLocal in listStoringLocal)
+            JsonUtility.FromJsonOverwrite(dicictionaryStoringLocalStr[storingLocal.name], storingLocal);
+
+        dicictionaryStoringLocalStr.Clear();
     }
 
 

@@ -47,6 +47,12 @@ public class StoringLocalData : ScriptableObject
         get { throw new FieldAccessException("У данного объекта не сущетствует свойства SaveDeath"); }
     }
 
+    public virtual List<Vector3> ListNormal
+    {
+        set { throw new ArgumentException("У данного объекта не сущетствует свойства ListNormal"); }
+        get { throw new FieldAccessException("У данного объекта не сущетствует свойства ListNormal"); }
+    }
+
     /// <summary>
     /// Сохраняем данные с унечтоженных объектов
     /// </summary>

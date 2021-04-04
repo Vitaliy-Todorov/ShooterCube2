@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class SaveLoadScene : SaveLoadStorage
 {
@@ -31,11 +32,11 @@ public class SaveLoadScene : SaveLoadStorage
     /// </summary>
     public static void LoadGame(string fileName)
     {
+        PlayerPrefs.DeleteKey("Load");
         Load(listSaveName, "/listSaveName");
         Load(listAllStoringLocal, fileName);
 
         SaveLoadComponent.LoadAll();
-        PlayerPrefs.DeleteKey("Load");
     }
 
     public static void LoadGameInManu(string fileName)
