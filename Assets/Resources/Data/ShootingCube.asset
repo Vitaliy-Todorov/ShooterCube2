@@ -9,6 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02772c34739250f48800ab661c03a9af, type: 3}
-  m_Name: SaveNameAndScenes
+  m_Script: {fileID: 11500000, guid: b06a0cbbeac7bf64eb4337896269e267, type: 3}
+  m_Name: ShootingCube
   m_EditorClassIdentifier: 
+  position: {x: 0, y: 0, z: 0}
+  normal: {x: 0, y: 0, z: 0}
+  normalModel: {x: 0, y: 0, z: 0}
+  health: 0
+  currentDeath: 0
+  saveDeath: 0

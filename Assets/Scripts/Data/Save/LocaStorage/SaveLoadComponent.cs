@@ -7,22 +7,21 @@ using UnityEngine;
 public abstract class SaveLoadComponent : MonoBehaviour
 {
     //Список всех компонентов сцены, данные с которых мы будут сохранять
-    //Нужен для сохранения всех данных в SaveAll (меняем при сохранении, удаляем из него компоненты унечтоженного объекта)
+    //Нужен для сохранения всех данных в SaveAll (меняем при сохранении, удаляем из него компоненты уничтоженного объекта)
     protected static Dictionary<GameObject, List<SaveLoadComponent>> saveDictionaryComponentGmObj = new Dictionary<GameObject, List<SaveLoadComponent>>();
     //Нужен для сохранения всех данных в LoadAll (не меняется при загрузке)
     protected static Dictionary<GameObject, List<SaveLoadComponent>> loadDictionaryComponentGmObj = new Dictionary<GameObject, List<SaveLoadComponent>>();
-    //Список временных хранилищь данных для каждого объекта, данные с которого будут сохранятся в постоянную память (соответственно через класс SaveLoadLink передаётся в SaveLoadScene)
-    protected static Dictionary<GameObject, StoringLocalData> listStoringLocal = new Dictionary<GameObject, StoringLocalData>();
 
-    public static Dictionary<GameObject, StoringLocalData> ListStoringLocal { get => listStoringLocal; set => listStoringLocal = value; }
+    //Список временных хранилищь данных для каждого объекта, данные с которого будут сохранятся в постоянную память (испоьзуется в
+    //AddInSaveListThisGmObj через него связывается каждый отдельный компонент с хранилищем)
+    protected static Dictionary<GameObject, StoringLocalData> dictionaryGmOdjAndStoringLocal = new Dictionary<GameObject, StoringLocalData>();
+    public static Dictionary<GameObject, StoringLocalData> DictionaryGmOdjAndStoringLocal { get => dictionaryGmOdjAndStoringLocal; set => dictionaryGmOdjAndStoringLocal = value; }
 
+    protected StoringLocalData storingLocal;
     [SerializeField]
     protected bool save;
-    protected StoringLocalData storingLocal;
-
     [SerializeField]
     protected bool saveInRootGmObj;
-    protected StoringLocalData storingLocalRootGmObj;
 
     /// <summary>
     /// Связываем временное хранилище и объект. 
@@ -48,14 +47,14 @@ public abstract class SaveLoadComponent : MonoBehaviour
     {
         saveDictionaryComponentGmObj[gameObject].Add(this);
         loadDictionaryComponentGmObj[gameObject].Add(this);
-        storingLocal = listStoringLocal[gameObject];
+        storingLocal = dictionaryGmOdjAndStoringLocal[gameObject];
     }
 
     protected void AddInSaveListRootGmObj()
     {
         saveDictionaryComponentGmObj[transform.root.gameObject].Add(this);
         loadDictionaryComponentGmObj[transform.root.gameObject].Add(this);
-        storingLocal = listStoringLocal[transform.root.gameObject];
+        storingLocal = dictionaryGmOdjAndStoringLocal[transform.root.gameObject];
     }
 
     /// <summary>
@@ -79,13 +78,13 @@ public abstract class SaveLoadComponent : MonoBehaviour
     /// </summary>
     public static void Remove(GameObject GmObj)
     {
-        listStoringLocal.Remove(GmObj);
+        dictionaryGmOdjAndStoringLocal.Remove(GmObj);
         saveDictionaryComponentGmObj.Remove(GmObj);
     }
 
     public static void Clear()
     {
-        listStoringLocal.Clear();
+        dictionaryGmOdjAndStoringLocal.Clear();
         saveDictionaryComponentGmObj.Clear();
         loadDictionaryComponentGmObj.Clear();
     }

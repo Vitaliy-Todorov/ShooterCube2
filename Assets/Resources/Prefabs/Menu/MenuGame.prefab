@@ -839,7 +839,7 @@ GameObject:
   - component: {fileID: 4106201885454005251}
   - component: {fileID: 4106201885454005248}
   - component: {fileID: 4106201885454005249}
-  - component: {fileID: 4106201885454005254}
+  - component: {fileID: 5007861288610401015}
   m_Layer: 5
   m_Name: MenuGame
   m_TagString: Untagged
@@ -928,7 +928,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4106201885454005254
+--- !u!114 &5007861288610401015
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

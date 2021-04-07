@@ -17,5 +17,7 @@ public class InterfaceStoringLocalShared : MonoBehaviour
     private void OnDestroy()
     {
         listAllStoringLocal.Clear();
+        //Очищаем список сохраняемых компонент (делаем здесь так как экземпляры SaveLoadComponent не создаются )
+        SaveLoadComponent.Clear();
     }
 }

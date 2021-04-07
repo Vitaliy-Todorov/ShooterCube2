@@ -9,7 +9,7 @@ public class InterfaceStoringLocalEachObject : InterfaceStoringLocalShared
     private void Awake()
     {
         //—в€зываем конкретный объект с временным хранилищем его данных
-        SaveLoadComponent.ListStoringLocal[gameObject] = storingLocalForGmObj;
+        SaveLoadComponent.DictionaryGmOdjAndStoringLocal[gameObject] = storingLocalForGmObj;
 
         //—оздаЄм список дл€ св€зываем игровой объект и те компаненты, информацию с которых сохран€ем (компоненты в список добовл€ютс€ в AddInSaveList)
         SaveLoadComponent.AddListComponents(gameObject);

@@ -15,6 +15,9 @@ public class InterfaceSaveLoadScene : SaveLoadScene
         //Хотя переменная объявляется и используется в SaveLoadStorage
         filePath = Application.dataPath;
 
+        //Дальнейшие операции нельзя сделать в InterfaceStoringLocalShared, так как при создании listAllStoringLocal 
+        //класс InterfaceStoringLocalEachObject не отработал и список listAllStoringLocal ещё не заполнен
+
         // Получаем для SaveLoadScene список всех сохраняемых временных хранилищь из SaveLoadComponent (SaveLoadLink)
         ListAllStoringLocal = InterfaceStoringLocalShared.ListAllStoringLocal;
 
@@ -27,11 +30,5 @@ public class InterfaceSaveLoadScene : SaveLoadScene
         {
             LoadGame(fileName);
         }
-    }
-
-    private void OnDestroy()
-    {
-        //Очищаем список сохраняемых компонент (делаем здесь так как экземпляры SaveLoadComponent не создаются )
-        SaveLoadComponent.Clear();
     }
 }

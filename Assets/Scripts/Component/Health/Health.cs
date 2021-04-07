@@ -26,8 +26,11 @@ public class Health : Death
 
     private void Start()
     {
-        healthBar.SetMaxHealth(maxHealth);
-        healthBar.SetHealth(currentHealth);
+        if (!(healthBar == null))
+        {
+            healthBar.SetMaxHealth(maxHealth);
+            healthBar.SetHealth(currentHealth);
+        }
 
         if (gmObjArmorPaint != null)
         {
@@ -43,7 +46,8 @@ public class Health : Death
         if ((collision.gameObject.transform.root != transform.root) && bullet)
         {
             currentHealth -= bullet.Damege / armor;
-            healthBar.SetHealth(currentHealth);
+            if (!(healthBar == null))
+                healthBar.SetHealth(currentHealth);
 
             if (currentHealth <= 0)
             {

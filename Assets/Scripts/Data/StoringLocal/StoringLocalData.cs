@@ -53,6 +53,12 @@ public class StoringLocalData : ScriptableObject
         get { throw new FieldAccessException("У данного объекта не сущетствует свойства ListNormal"); }
     }
 
+    public virtual List<float> ListHealth
+    {
+        set { throw new ArgumentException("У данного объекта не сущетствует свойства ListHealth"); }
+        get { throw new FieldAccessException("У данного объекта не сущетствует свойства ListHealth"); }
+    }
+
     /// <summary>
     /// Сохраняем данные с унечтоженных объектов
     /// </summary>
