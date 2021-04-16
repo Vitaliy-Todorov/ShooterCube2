@@ -39,13 +39,15 @@ public class GameMenu : MonoBehaviour
     void Save()
     {
         string fileName = "/save" + 1;
-        SaveLoadScene.SaveGame(fileName);
+        //SaveLoadScene.SaveGame(fileName);
+        SaveLoadMediatorScenes.SaveGame(fileName);
     }
 
     void Load()
     {
         string fileName = "/save" + 1;
-        SaveLoadScene.LoadGameInManu(fileName);
+        //SaveLoadScene.LoadGameInManu(fileName);
+        SaveLoadMediatorScenes.LoadGameInManu(fileName);
         //Запускаем время после загрузки
         Time.timeScale = 1;
     }

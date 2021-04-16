@@ -6,25 +6,27 @@ public class Death : SaveLoadComponent
 
     private void Awake()
     {
-        AddInSaveList();
+        //AddInSaveList();
+        SaveLoadAllComponent.listComponents.Add(this);
     }
 
     public void DeathRoot()
     {
-        storingLocal.CurrentDeath = true;
+        death = true;
+        SaveLoadAllComponent.Set(this, ".death", death);
         Remove(gameObject);
         Destroy(transform.root.gameObject);
     }
 
     public override void Save()
     {
-        storingLocal.CurrentDeath = death;
-        storingLocal.SaveDestroy();
+        SaveLoadAllComponent.Set(this, ".death", death);
     }
 
     public override void Load()
     {
-        death = storingLocal.SaveDeath;
+        Debug.Log(this);
+        death = (bool) SaveLoadAllComponent.Get(this, ".death");
         if (death)
             DeathRoot();
     }

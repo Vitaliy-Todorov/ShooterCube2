@@ -21,7 +21,8 @@ public class Health : Death
 
     private void Awake()
     {
-        AddInSaveList();
+        //AddInSaveList();
+        SaveLoadAllComponent.listComponents.Add(this);
     }
 
     private void Start()
@@ -59,14 +60,17 @@ public class Health : Death
     public override void Save()
     {
         base.Save();
-        storingLocal.Health = currentHealth;
+        //storingLocal.Health = currentHealth;
+        SaveLoadAllComponent.Set(this, "health", currentHealth);
     }
 
     public override void Load()
     {
         base.Load();
 
-        currentHealth = storingLocal.Health;
-        healthBar.SetHealth(currentHealth);
+        //currentHealth = storingLocal.Health;
+        currentHealth = (float) SaveLoadAllComponent.Get(this, "health");
+        if(healthBar != null)
+            healthBar.SetHealth(currentHealth);
     }
 }

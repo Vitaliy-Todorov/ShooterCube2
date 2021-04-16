@@ -17,14 +17,14 @@ public class SaveLoadScene : SaveLoadStorage
     public static void SaveGame(string fileName)
     {
         listSaveName.Add(fileName);
-        Save(listSaveName, "/listSaveName");
+        //Save(listSaveName, "/listSaveName");
         //Сохраняем название сцены (связка названия сохранения и названия сцены)
         string sceneName = SceneManager.GetActiveScene().name;
         PlayerPrefs.SetString(fileName, sceneName);
 
         SaveLoadComponent.SaveAll();
-        StoringLocalData.SaveDestroyAll();
-        Save(listAllStoringLocal, fileName);
+        //StoringLocalData.SaveDestroyAll();
+        //Save(listAllStoringLocal, fileName);
     }
 
     /// <summary>
@@ -33,8 +33,8 @@ public class SaveLoadScene : SaveLoadStorage
     public static void LoadGame(string fileName)
     {
         PlayerPrefs.DeleteKey("Load");
-        Load(listSaveName, "/listSaveName");
-        Load(listAllStoringLocal, fileName);
+        //Load(listSaveName, "/listSaveName");
+        //Load(listAllStoringLocal, fileName);
 
         SaveLoadComponent.LoadAll();
     }
