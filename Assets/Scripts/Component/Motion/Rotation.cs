@@ -2,9 +2,13 @@ using UnityEngine;
 
 public class Rotation : SaveLoadComponent
 {
+    [SerializeField]
+    bool save = true;
+
     private void Awake()
     {
-        AddInSaveList();
+        if (save)
+            SaveLoadComponentAndLocalStorage.listComponents.Add(this);
     }
 
     private void FixedUpdate()
@@ -21,11 +25,11 @@ public class Rotation : SaveLoadComponent
 
     public override void Save()
     {
-        storingLocal.NormalModel = transform.forward;
+        SaveLoadComponentAndLocalStorage.Set(this, "normal", new LocalStorage(transform.forward));
     }
 
     public override void Load()
     {
-        transform.forward = storingLocal.NormalModel;
+        transform.forward = SaveLoadComponentAndLocalStorage.Get(this, "normal").Vector3;
     }
 }

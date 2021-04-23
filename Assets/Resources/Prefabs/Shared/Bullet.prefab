@@ -139,5 +139,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   save: 0
-  saveInRootGmObj: 0
   speed: 15

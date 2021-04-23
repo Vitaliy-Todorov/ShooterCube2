@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 public class Health : Death
 {
@@ -18,12 +19,6 @@ public class Health : Death
     int armor = 1;
     [SerializeField]
     GameObject gmObjArmorPaint;
-
-    private void Awake()
-    {
-        //AddInSaveList();
-        SaveLoadAllComponent.listComponents.Add(this);
-    }
 
     private void Start()
     {
@@ -60,17 +55,18 @@ public class Health : Death
     public override void Save()
     {
         base.Save();
-        //storingLocal.Health = currentHealth;
-        SaveLoadAllComponent.Set(this, "health", currentHealth);
+
+        locaStorage.HealthAndDeath.Health = currentHealth;
+        SaveLoadComponentAndLocalStorage.Set(this, "healthAndDeath", locaStorage);
     }
 
     public override void Load()
     {
         base.Load();
 
-        //currentHealth = storingLocal.Health;
-        currentHealth = (float) SaveLoadAllComponent.Get(this, "health");
-        if(healthBar != null)
+        currentHealth = locaStorage.HealthAndDeath.Health;
+
+        if (healthBar != null)
             healthBar.SetHealth(currentHealth);
     }
 }

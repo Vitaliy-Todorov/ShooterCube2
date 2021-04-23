@@ -1,34 +1,35 @@
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
-using System;
 
 public class RotationStatic : SaveLoadComponent
 {
     [SerializeField]
     List<GameObject> listRotatableGmObj = new List<GameObject>();
 
+    [SerializeField]
+    bool save = true;
+
     private void Awake()
     {
-        AddInSaveList();
+        if (save)
+            SaveLoadComponentAndLocalStorage.listComponents.Add(this);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        foreach (GameObject RotatableGmObj in listRotatableGmObj)
-            RotatableGmObj.transform.Rotate(0.0f, 90.0f, 0.0f);
+        foreach (GameObject rotatableGmObj in listRotatableGmObj)
+            rotatableGmObj.transform.Rotate(0.0f, 90.0f, 0.0f);
     }
 
     public override void Save()
     {
-        for (int i = 0; i < (listRotatableGmObj.Count); i++)
-            storingLocal.ListNormal.Add(listRotatableGmObj[i].transform.forward);
+        foreach (GameObject rotatableGmObj in listRotatableGmObj)
+            SaveLoadComponentAndLocalStorage.Set(this,rotatableGmObj + "normal", new LocalStorage(rotatableGmObj.transform.forward));
     }
 
     public override void Load()
     {
-        foreach (var RotatableGmObj in storingLocal.ListNormal.Zip(listRotatableGmObj, Tuple.Create))
-            RotatableGmObj.Item2.transform.forward = RotatableGmObj.Item1;
-        storingLocal.ListNormal.Clear();
+        foreach (GameObject rotatableGmObj in listRotatableGmObj)
+            rotatableGmObj.transform.forward = SaveLoadComponentAndLocalStorage.Get(this,rotatableGmObj + "normal").Vector3;
     }
 }

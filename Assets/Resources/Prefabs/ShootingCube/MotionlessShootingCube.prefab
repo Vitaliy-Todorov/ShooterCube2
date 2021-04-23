@@ -345,7 +345,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3827228389916834610}
   - component: {fileID: 3827228389916834611}
-  - component: {fileID: 3843220158967953352}
   - component: {fileID: 5270740207902962496}
   m_Layer: 0
   m_Name: MotionlessShootingCube
@@ -387,19 +386,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &3843220158967953352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3827228389916834613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02ffe19c4e21ceb459b5e4dd78d3ff1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  storingLocalForGmObj: {fileID: 0}
 --- !u!114 &5270740207902962496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,8 +398,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079e8ce16a6e40842958315b423b5962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  save: 1
-  saveInRootGmObj: 0
   maxHealth: 100
   currentHealth: 100
   healthBar: {fileID: 3827228389279103745}

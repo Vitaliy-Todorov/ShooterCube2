@@ -46,8 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18d40243e1eb741489d8e5867e03f9cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  save: 1
-  saveInRootGmObj: 1
 --- !u!1 &5502899835297996741
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,7 +56,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5502899835297996738}
   - component: {fileID: 5502899835297996739}
-  - component: {fileID: 5482830801832891192}
   - component: {fileID: 5502899835297996740}
   - component: {fileID: 3487579985497741232}
   m_Layer: 0
@@ -101,19 +98,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &5482830801832891192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5502899835297996741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02ffe19c4e21ceb459b5e4dd78d3ff1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  storingLocalForGmObj: {fileID: 11400000, guid: 4cf53ab848780e14a840c8c781e8cbaa, type: 2}
 --- !u!114 &5502899835297996740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,8 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ca3f8b3fa4b1846bb3ccbbdb119c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  save: 1
-  saveInRootGmObj: 0
   speed: 10
 --- !u!114 &3487579985497741232
 MonoBehaviour:
@@ -141,8 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079e8ce16a6e40842958315b423b5962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  save: 1
-  saveInRootGmObj: 0
   maxHealth: 100
   currentHealth: 100
   healthBar: {fileID: 5502899835800592369}

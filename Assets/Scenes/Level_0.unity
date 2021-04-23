@@ -357,6 +357,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3487579985497741232, guid: 0029a70ea8e3ddf489865c6bbf26cfec, type: 3}
+      propertyPath: save
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5482830801832891192, guid: 0029a70ea8e3ddf489865c6bbf26cfec, type: 3}
       propertyPath: storingLocalForGmObj
       value: 
@@ -405,6 +409,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5502899835297996740, guid: 0029a70ea8e3ddf489865c6bbf26cfec, type: 3}
+      propertyPath: save
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5502899835297996741, guid: 0029a70ea8e3ddf489865c6bbf26cfec, type: 3}
       propertyPath: m_Name
       value: ShootingCube (1)
@@ -421,7 +429,8 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 963194228}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5482830801832891192, guid: 0029a70ea8e3ddf489865c6bbf26cfec, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0029a70ea8e3ddf489865c6bbf26cfec, type: 3}
 --- !u!1 &705507993
 GameObject:
@@ -701,6 +710,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3487579985497741232, guid: 0029a70ea8e3ddf489865c6bbf26cfec, type: 3}
+      propertyPath: save
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5482830801832891192, guid: 0029a70ea8e3ddf489865c6bbf26cfec, type: 3}
       propertyPath: storingLocalForGmObj
       value: 
@@ -749,6 +762,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5502899835297996740, guid: 0029a70ea8e3ddf489865c6bbf26cfec, type: 3}
+      propertyPath: save
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5502899835297996741, guid: 0029a70ea8e3ddf489865c6bbf26cfec, type: 3}
       propertyPath: m_Name
       value: ShootingCube
@@ -765,7 +782,8 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 963194228}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5482830801832891192, guid: 0029a70ea8e3ddf489865c6bbf26cfec, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0029a70ea8e3ddf489865c6bbf26cfec, type: 3}
 --- !u!1 &1153971570 stripped
 GameObject:
@@ -1245,7 +1263,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2671535206420525297, guid: c4e43aff5c371564b9d76de0c7ac1375, type: 3}
+    - {fileID: 8714195567381055487, guid: c4e43aff5c371564b9d76de0c7ac1375, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c4e43aff5c371564b9d76de0c7ac1375, type: 3}
 --- !u!1001 &4106201884309471605
 PrefabInstance:

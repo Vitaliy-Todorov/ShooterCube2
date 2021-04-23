@@ -2,9 +2,18 @@ using UnityEngine;
 
 public class Motion : SaveLoadComponent
 {
+    [SerializeField]
+    bool save = true;
+
     private void Awake()
     {
-        AddInSaveList();
+        if(save)
+            SaveLoadComponentAndLocalStorage.listComponents.Add(this);
+    }
+
+    private void OnDestroy()
+    {
+        SaveLoadComponentAndLocalStorage.Remove(this);
     }
 
     public void Move(Vector3 movement, float speed)
@@ -20,13 +29,13 @@ public class Motion : SaveLoadComponent
 
     public override void Save()
     {
-        storingLocal.Position = transform.position;
-        storingLocal.Normal = transform.forward;
+        SaveLoadComponentAndLocalStorage.Set(this, "position", new LocalStorage(transform.position));
+        SaveLoadComponentAndLocalStorage.Set(this, "normal", new LocalStorage(transform.forward));
     }
 
     public override void Load()
     {
-        transform.position = storingLocal.Position;
-        transform.forward = storingLocal.Normal;
+        transform.position = SaveLoadComponentAndLocalStorage.Get(this, "position").Vector3;
+        transform.forward = SaveLoadComponentAndLocalStorage.Get(this, "normal").Vector3;
     }
 }

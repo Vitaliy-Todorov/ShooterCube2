@@ -3,30 +3,38 @@ using UnityEngine;
 public class Death : SaveLoadComponent
 {
     bool death;
+    protected LocalStorage locaStorage = new LocalStorage();
+
+    [SerializeField]
+    bool save = true;
 
     private void Awake()
     {
-        //AddInSaveList();
-        SaveLoadAllComponent.listComponents.Add(this);
+        if (save)
+            SaveLoadComponentAndLocalStorage.listComponents.Add(this);
     }
 
     public void DeathRoot()
     {
         death = true;
-        SaveLoadAllComponent.Set(this, ".death", death);
-        Remove(gameObject);
+        locaStorage.HealthAndDeath.Death = death;
+
+        SaveLoadComponentAndLocalStorage.Set(this, "healthAndDeath", locaStorage);
+        //SaveLoadComponentAndLocalStorage.Remove(this);
+
         Destroy(transform.root.gameObject);
     }
 
     public override void Save()
     {
-        SaveLoadAllComponent.Set(this, ".death", death);
+        locaStorage.HealthAndDeath.Death = death;
+        SaveLoadComponentAndLocalStorage.Set(this, "healthAndDeath", locaStorage);
     }
 
     public override void Load()
     {
-        Debug.Log(this);
-        death = (bool) SaveLoadAllComponent.Get(this, ".death");
+        locaStorage = SaveLoadComponentAndLocalStorage.Get(this, "healthAndDeath");
+        death = locaStorage.HealthAndDeath.Death;
         if (death)
             DeathRoot();
     }
