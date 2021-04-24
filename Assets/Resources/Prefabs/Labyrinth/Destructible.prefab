@@ -108,6 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079e8ce16a6e40842958315b423b5962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyRoot: 0
+  save: 1
   maxHealth: 1
   currentHealth: 1
   healthBar: {fileID: 0}

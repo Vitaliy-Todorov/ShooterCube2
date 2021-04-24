@@ -39,7 +39,7 @@ public class Health : Death
     {
         InflictDamage bullet = collision.gameObject.GetComponent<InflictDamage>();
 
-        if ((collision.gameObject.transform.root != transform.root) && bullet)
+        if ((collision.gameObject.transform.root != transform.parent) && bullet)
         {
             currentHealth -= bullet.Damege / armor;
             if (!(healthBar == null))

@@ -11,6 +11,9 @@ public class Gun : MonoBehaviour
     [SerializeField]
     GameObject bullet;
 
+    [SerializeField]
+    Transform parent;
+
     public void Shot()
     {
         Vector3 ganPosition = transform.position;
@@ -18,7 +21,7 @@ public class Gun : MonoBehaviour
         //—мещаем по€вление пули немного вперЄд, что бы она не двигала стрел€ющий куб
         ganPosition += transform.forward * 0.3f;
         GameObject newBullet = Instantiate(bullet, ganPosition, ganRotation);
-        newBullet.transform.parent = transform.parent;
+        newBullet.transform.parent = parent;
 
         newBullet.GetComponent<InflictDamage>().Damege = damege;
         newBullet.GetComponent<BulletMotion>().Speed = speed;

@@ -6,6 +6,9 @@ public class Death : SaveLoadComponent
     protected LocalStorage locaStorage = new LocalStorage();
 
     [SerializeField]
+    bool destroyRoot = true;
+
+    [SerializeField]
     bool save = true;
 
     private void Awake()
@@ -22,7 +25,14 @@ public class Death : SaveLoadComponent
         SaveLoadComponentAndLocalStorage.Set(this, "healthAndDeath", locaStorage);
         //SaveLoadComponentAndLocalStorage.Remove(this);
 
-        Destroy(transform.root.gameObject);
+        GameObject destroy;
+
+        if (destroyRoot)
+            destroy = transform.root.gameObject;
+        else
+            destroy = gameObject;
+
+        Destroy(destroy);
     }
 
     public override void Save()
