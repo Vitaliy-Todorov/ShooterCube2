@@ -11,13 +11,26 @@ public class Rotation : SaveLoadComponent
             SaveLoadComponentAndLocalStorage.listComponents.Add(this);
     }
 
+    private void OnDestroy()
+    {
+        SaveLoadComponentAndLocalStorage.RemoveDictionary(this, transform.root + "normal");
+    }
+
     public override void Save()
     {
-        SaveLoadComponentAndLocalStorage.Set(this, "normal", new LocalStorage(transform.forward));
+        try
+        {
+            SaveLoadComponentAndLocalStorage.Set(this, transform.root + "normal", new LocalStorage(transform.forward));
+        }
+        catch { }
     }
 
     public override void Load()
     {
-        transform.forward = SaveLoadComponentAndLocalStorage.Get(this, "normal").Vector3;
+        try
+        {
+            transform.forward = SaveLoadComponentAndLocalStorage.Get(this, transform.root + "normal").Vector3ToStorage;
+        }
+        catch { }
     }
 }

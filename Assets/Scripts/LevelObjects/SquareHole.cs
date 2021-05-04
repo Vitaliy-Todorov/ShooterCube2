@@ -38,8 +38,6 @@ public class SquareHole : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter");
-
         GameObject gmObj = other.gameObject;
         sourceLayers.Add(gmObj, gmObj.layer);
         gmObj.layer = 12;
@@ -47,8 +45,6 @@ public class SquareHole : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("OnTriggerExit");
-
         GameObject gmObj = other.gameObject;
         gmObj.layer = sourceLayers[gmObj];
         sourceLayers.Remove(gmObj);

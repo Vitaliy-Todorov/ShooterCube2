@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CallFinishMenu : MonoBehaviour
@@ -9,7 +7,7 @@ public class CallFinishMenu : MonoBehaviour
     [SerializeField]
     GameObject GameMenu;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionExit(Collision collision)
     {
         Destroy(GameMenu);
 

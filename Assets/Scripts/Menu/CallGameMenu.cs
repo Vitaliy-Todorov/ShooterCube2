@@ -3,7 +3,7 @@ using UnityEngine;
 public class CallGameMenu : MonoBehaviour
 {
     [SerializeField]
-    GameObject GameMenu;
+    GameObject gameMenu;
     bool ofOn;
 
     void Update()
@@ -11,7 +11,7 @@ public class CallGameMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ofOn = !ofOn;
-            GameMenu.gameObject.SetActive(ofOn);
+            gameMenu.gameObject.SetActive(ofOn);
             if (ofOn)
             {
                 Time.timeScale = 0;

@@ -1,5 +1,8 @@
 using System.IO;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using UnityEngine;
+using System.Collections.Generic;
 
 /// <summary>
 /// Сохраняет/загружает в файл
@@ -16,17 +19,15 @@ public class SaveLoadToFile
         _filePath = filePath;
     }
 
-    public void Save(object saveObject, string fileName)
+    public void Save<T>(T saveObject, string fileName)
     {
         string strJsonData = JsonConvert.SerializeObject(saveObject);
-
         File.WriteAllText(_filePath + fileName, strJsonData);
     }
 
-    public Type Load<Type>(string fileName)
+    public T Load<T>(string fileName)
     {
         string strJsonData = File.ReadAllText(_filePath + fileName);
-
-        return JsonConvert.DeserializeObject<Type>(strJsonData);
+        return JsonConvert.DeserializeObject<T>(strJsonData);
     }
 }

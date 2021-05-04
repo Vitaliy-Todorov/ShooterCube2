@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class SaveLoadScene : SaveLoadComponentAndLocalStorage
 {
@@ -38,7 +39,7 @@ public class SaveLoadScene : SaveLoadComponentAndLocalStorage
             listSaveName.Add(fileName);
 
         //Сохраняем список названий файлов
-        saveLoad.Save(listSaveName, "/listSaveName");
+        //saveLoad.Save(listSaveName, "/listSaveName");
 
         //Сохраняем название сцены (связка названия сохранения и названия сцены)
         string sceneName = SceneManager.GetActiveScene().name;
@@ -46,6 +47,7 @@ public class SaveLoadScene : SaveLoadComponentAndLocalStorage
 
         //Помещаем сохраняемую информацию в LocalStorage. Помещаем все LocalStorage в словарь и сохраняем словарь
         SaveAllComponent();
+
         saveLoad.Save(dictionaryComponentAndLocalStorage, fileName);
     }
 
@@ -58,6 +60,7 @@ public class SaveLoadScene : SaveLoadComponentAndLocalStorage
 
         PlayerPrefs.DeleteKey("Load");
         //Load(listSaveName, "/listSaveName");
+
         dictionaryComponentAndLocalStorage = saveLoad.Load<Dictionary<string, LocalStorage>>(fileName);
 
         LoadAllComponent();
@@ -88,7 +91,7 @@ public class SaveLoadScene : SaveLoadComponentAndLocalStorage
     /// </summary>
     public static void LoadAllComponent()
     {
-        foreach (SaveLoadComponent component in listComponents)
+        foreach (SaveLoadComponent component in listComponents.ToList())
             component.Load();
     }
 }

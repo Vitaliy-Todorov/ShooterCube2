@@ -12,8 +12,9 @@ public class Motion : SaveLoadComponent
     }
 
     private void OnDestroy()
-    {
-        SaveLoadComponentAndLocalStorage.Remove(this);
+    {/*
+        SaveLoadComponentAndLocalStorage.RemoveDictionary(this, "position");
+        SaveLoadComponentAndLocalStorage.RemoveDictionary(this, "normal");*/
     }
 
     public void Move(Vector3 movement, float speed)
@@ -27,15 +28,28 @@ public class Motion : SaveLoadComponent
         transform.forward = normalTeleportation;
     }
 
+    public void Teleportation(Vector3 positionTeleportation)
+    {
+        transform.position = positionTeleportation;
+    }
+
     public override void Save()
     {
-        SaveLoadComponentAndLocalStorage.Set(this, "position", new LocalStorage(transform.position));
-        SaveLoadComponentAndLocalStorage.Set(this, "normal", new LocalStorage(transform.forward));
+        try
+        {
+            SaveLoadComponentAndLocalStorage.Set(this, "position", new LocalStorage(transform.position));
+            SaveLoadComponentAndLocalStorage.Set(this, "normal", new LocalStorage(transform.forward));
+        }
+        catch { }
     }
 
     public override void Load()
     {
-        transform.position = SaveLoadComponentAndLocalStorage.Get(this, "position").Vector3;
-        transform.forward = SaveLoadComponentAndLocalStorage.Get(this, "normal").Vector3;
+        try
+        {
+            transform.position = SaveLoadComponentAndLocalStorage.Get(this, "position").Vector3ToStorage;
+            transform.forward = SaveLoadComponentAndLocalStorage.Get(this, "normal").Vector3ToStorage;
+        }
+        catch { }
     }
 }

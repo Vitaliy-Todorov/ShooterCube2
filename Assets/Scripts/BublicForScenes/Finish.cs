@@ -10,10 +10,9 @@ public class Finish : MonoBehaviour
     [SerializeField]
     GameObject ñallGameMenu;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
         ñallGameMenu.GetComponent<CallGameMenu>().enabled = false;
-        Destroy(collision.collider);
         finish.gameObject.SetActive(true);
     }
 }

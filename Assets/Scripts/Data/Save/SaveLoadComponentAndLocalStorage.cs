@@ -6,7 +6,9 @@ using UnityEngine;
 /// </summary>
 public class SaveLoadComponentAndLocalStorage : MonoBehaviour
 {
+    [SerializeField]
     protected static Dictionary<string, LocalStorage> dictionaryComponentAndLocalStorage = new Dictionary<string, LocalStorage>();
+    [SerializeField]
     public static List<SaveLoadComponent> listComponents = new List<SaveLoadComponent>();
 
     /// <summary>
@@ -39,8 +41,9 @@ public class SaveLoadComponentAndLocalStorage : MonoBehaviour
     /// <summary>
     /// Удаляем компонент из сохраняемых
     /// </summary>
-    public static void Remove(SaveLoadComponent component)
+    public static void RemoveDictionary(SaveLoadComponent component, string key)
     {
         listComponents.Remove(component);
+        dictionaryComponentAndLocalStorage.Remove(component + key);
     }
 }

@@ -30,6 +30,6 @@ public class RotationStatic : SaveLoadComponent
     public override void Load()
     {
         foreach (GameObject rotatableGmObj in listRotatableGmObj)
-            rotatableGmObj.transform.forward = SaveLoadComponentAndLocalStorage.Get(this,rotatableGmObj + "normal").Vector3;
+            rotatableGmObj.transform.forward = SaveLoadComponentAndLocalStorage.Get(this,rotatableGmObj + "normal").Vector3ToStorage;
     }
 }

@@ -1,0 +1,33 @@
+{
+  "$id": "1",
+  "ShootingCube (1) (Health)healthAndDeath": {
+    "$id": "2",
+    "Vector3ToStorage": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "Float": 0.0,
+    "Bool": false,
+    "HealthAndDeath": {
+      "$id": "3",
+      "Health": 100.0,
+      "Death": false
+    }
+  },
+  "ShootingCube (Health)healthAndDeath": {
+    "$id": "4",
+    "Vector3ToStorage": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "Float": 0.0,
+    "Bool": false,
+    "HealthAndDeath": {
+      "$id": "5",
+      "Health": 100.0,
+      "Death": false
+    }
+  }
+}

@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 
 public class LocalStorage
 {
@@ -19,17 +18,17 @@ public class LocalStorage
 
     public LocalStorage(Vector3 vector3)
     {
-        Vector3 = vector3;
+        _vector3 = vector3;
     }
 
     public LocalStorage(float float_)
     {
-        Float = float_;
+        _float = float_;
     }
 
     public LocalStorage(bool bool_)
     {
-        Bool = bool_;
+        _bool = bool_;
     }
 
     public LocalStorage(HealthAndDeathLocaStorage healthAndDeath)
@@ -37,7 +36,7 @@ public class LocalStorage
         _healthAndDeath = healthAndDeath;
     }
 
-    public Vector3 Vector3 { get => _vector3; set => _vector3 = value; }
+    public Vector3 Vector3ToStorage { get => _vector3; set => _vector3 = value; }
     public float Float { get => _float; set => _float = value; }
     public bool Bool { get => _bool; set => _bool = value; }
 

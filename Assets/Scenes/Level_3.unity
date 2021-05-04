@@ -516,23 +516,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8985532594179540878, guid: 4fe60df98a8ce5c408cb4e8ec73c012f, type: 3}
   m_PrefabInstance: {fileID: 1309479125}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &488899977 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2809038721508109462, guid: c4e43aff5c371564b9d76de0c7ac1375, type: 3}
-  m_PrefabInstance: {fileID: 1998059524}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &488899978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 488899977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b36a707b0860cbf4486aa7607c147a5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &561459033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2148,6 +2131,10 @@ PrefabInstance:
       propertyPath: GameMenu
       value: 
       objectReference: {fileID: 1102210276}
+    - target: {fileID: 2809038721508109457, guid: c4e43aff5c371564b9d76de0c7ac1375, type: 3}
+      propertyPath: gameMenu
+      value: 
+      objectReference: {fileID: 1102210276}
     - target: {fileID: 2809038721508109462, guid: c4e43aff5c371564b9d76de0c7ac1375, type: 3}
       propertyPath: m_Name
       value: Shared
@@ -2328,7 +2315,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a5c4c327622d8224cb5e86c424f09c97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
